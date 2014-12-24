@@ -2,10 +2,29 @@
 <html>
   <head>
     <title>Hello World!</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 600px;
+        overflow: hidden;
+      }
+    </style>
+    <script>
+    var webFrame = require('web-frame');
+    webFrame.setZoomFactor(2);
+    require('web-frame').setSpellCheckProvider("en-US", true, {
+      spellCheck: function(text) {
+        return !(require('spellchecker').isMisspelled(text));
+      }
+    });
+    </script>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using node.js <script>document.write(process.version)</script>
-    and atom-shell <script>document.write(process.versions['atom-shell'])</script>.
+    test
+    <webview id="slack" src="https://slack.com/" autosize="on" minwidth="800" minheight="600"></webview>
+    <script>
+      var webview = document.getElementById("slack");
+    </script>
   </body>
 </html>
